@@ -14,6 +14,7 @@ Tecnologias utilizadas:
 - Prisma
 - shadcn/ui
 - Tailwind CSS
+- BetterAuth para autenticação.
 
 - SEMPRE use shadcn como biblioteca de componentes
 - SEMPRE use componentes que estão em @app/\_components/ui/page.tsx
@@ -22,3 +23,4 @@ Tecnologias utilizadas:
 - **SEMPRE** use o MCP do Context7 para buscar documentações, sites e APIs
 - **SEMPRE** use os componentes @app/\_components/footer.tsx e @app/\_components/header.tsx na hora de criar headers e footers. **NUNCA** os crie manualmente.
 - Evite ao máximo duplicidade de código. Ao repetir um código, crie componentes e/ou funções utilitárias.
+- Ao usar Figma MCP, **SEMPRE** seja 100% fiel ao Figma **CUSTE O QUE CUSTAR**.
