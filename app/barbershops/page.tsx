@@ -10,20 +10,20 @@ const BarbershopsPage = async ({ searchParams }: PageProps<"/barbershops">) => {
   const { search } = await searchParams;
   const barbershops = search
     ? await prisma.barbershop.findMany({
-        where: {
-          services: {
-            some: {
-              name: {
-                contains: search as string,
-                mode: "insensitive",
-              },
+      where: {
+        services: {
+          some: {
+            name: {
+              contains: search as string,
+              mode: "insensitive",
             },
           },
         },
-        orderBy: {
-          name: "asc",
-        },
-      })
+      },
+      orderBy: {
+        name: "asc",
+      },
+    })
     : [];
 
   return (

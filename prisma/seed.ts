@@ -1,6 +1,11 @@
 import { PrismaClient } from "../generated/prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  adapter: new PrismaPg({
+    connectionString: `${process.env.DATABASE_URL}`,
+  }),
+});
 
 async function seedDatabase() {
   try {
@@ -137,10 +142,10 @@ async function seedDatabase() {
       barbershops.push(barbershop);
     }
 
-    // Fechar a conexão com o banco de dados
-    await prisma.$disconnect();
   } catch (error) {
     console.error("Erro ao criar as barbearias:", error);
+  } finally {
+    await prisma.$disconnect();
   }
 }
 
