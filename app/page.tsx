@@ -36,7 +36,7 @@ const Home = async () => {
           src={banner}
           alt="Agende agora!"
           sizes="100vw"
-          className="h-auto w-full"
+          className="h-auto w-full lg:rounded-2xl"
         />
 
         <PageSection>
