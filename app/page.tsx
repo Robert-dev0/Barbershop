@@ -36,12 +36,11 @@ const Home = async () => {
           <QuickSearchButtons />
         </div>
 
-        <div className="relative mt-6 aspect-[16/9] w-full md:aspect-[21/9]">
+        <div className="mt-6 w-full">
           <Image
             src={banner}
             alt="Agende agora!"
-            fill
-            className="rounded-xl object-cover object-center lg:rounded-2xl"
+            className="h-auto w-full rounded-xl object-cover lg:rounded-2xl"
           />
         </div>
 
