@@ -3,15 +3,14 @@ import Header from "./_components/header";
 import SearchInput from "./_components/search-input";
 import banner from "../public/banner.png";
 import { prisma } from "@/lib/prisma";
-import BarbershopItem from "./_components/barbershop-item";
 import Footer from "./_components/footer";
 import {
   PageContainer,
   PageSection,
-  PageSectionGrid,
   PageSectionTitle,
 } from "./_components/ui/page";
 import QuickSearchButtons from "./_components/quick-search-buttons";
+import BarbershopsCarousel from "./_components/barbershops-carousel";
 
 const Home = async () => {
   const recommendedBarbershops = await prisma.barbershop.findMany({
@@ -26,32 +25,30 @@ const Home = async () => {
   });
 
   return (
-    <main>
+    <main className="max-w-3xl mx-auto bg-background min-h-screen shadow-xl overflow-hidden border-x border-border">
       <Header />
       <PageContainer>
-        <div className="mx-auto w-full max-w-2xl lg:mt-6">
+        <div className="mx-auto w-full max-w-sm mt-3 lg:mt-6">
           <SearchInput />
         </div>
 
-        <QuickSearchButtons />
+        <div className="w-full">
+          <QuickSearchButtons />
+        </div>
 
-        <div className="relative mt-6 h-[50vh] min-h-[300px] w-full md:h-[65vh] lg:h-[82vh]">
+        <div className="relative mt-6 aspect-[16/9] w-full md:aspect-[21/9]">
           <Image
             src={banner}
             alt="Agende agora!"
             fill
-            className="rounded-xl object-cover lg:rounded-2xl"
+            className="rounded-xl object-cover object-center lg:rounded-2xl"
           />
         </div>
 
-        <div className="lg:mt-10 lg:space-y-10">
+        <div className="mt-8">
           <PageSection>
             <PageSectionTitle>Recomendados</PageSectionTitle>
-            <PageSectionGrid>
-              {recommendedBarbershops.map((barbershop) => (
-                <BarbershopItem key={barbershop.id} barbershop={barbershop} />
-              ))}
-            </PageSectionGrid>
+            <BarbershopsCarousel barbershops={recommendedBarbershops} />
           </PageSection>
 
         </div>

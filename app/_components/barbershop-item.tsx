@@ -10,7 +10,7 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
   return (
     <Link
       href={`/barbershops/${barbershop.id}`}
-      className="relative w-full min-h-[200px] rounded-xl"
+      className="relative block w-full min-h-[200px] rounded-xl"
     >
       <div className="absolute top-0 left-0 z-10 h-full w-full rounded-lg bg-linear-to-t from-black to-transparent" />
       <Image
