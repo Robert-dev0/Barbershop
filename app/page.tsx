@@ -26,7 +26,7 @@ const Home = async () => {
   });
 
   return (
-    <main className="mx-auto max-w-5xl">
+    <main>
       <Header />
       <PageContainer>
         <div className="mx-auto w-full max-w-2xl lg:mt-6">
@@ -35,7 +35,7 @@ const Home = async () => {
 
         <QuickSearchButtons />
 
-        <div className="relative mt-6 h-[700px] w-full md:h-[700px] lg:h-[800px]">
+        <div className="relative mt-6 h-[50vh] min-h-[300px] w-full md:h-[65vh] lg:h-[82vh]">
           <Image
             src={banner}
             alt="Agende agora!"
