@@ -10,7 +10,7 @@ import { returnValidationErrors } from "next-safe-action";
 
 const inputSchema = z.object({
   barbershopId: z.string(),
-  date: z.date(),
+  date: z.coerce.date(),
 });
 
 const TIME_SLOTS = [
@@ -38,14 +38,6 @@ const TIME_SLOTS = [
 export const getDateAvailableTimeSlots = actionClient
   .inputSchema(inputSchema)
   .action(async ({ parsedInput: { barbershopId, date } }) => {
-    const session = await auth.api.getSession({
-      headers: await headers(),
-    });
-    if (!session?.user) {
-      returnValidationErrors(inputSchema, {
-        _errors: ["Unauthorized"],
-      });
-    }
     const bookings = await prisma.booking.findMany({
       where: {
         barbershopId,

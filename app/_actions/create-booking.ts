@@ -8,7 +8,7 @@ import { z } from "zod";
 
 const inputSchema = z.object({
   serviceId: z.uuid(),
-  date: z.date(),
+  date: z.coerce.date(),
 });
 
 export const createBooking = actionClient

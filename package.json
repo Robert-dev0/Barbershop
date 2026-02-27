@@ -9,6 +9,9 @@
     "lint": "eslint",
     "postinstall": "prisma generate"
   },
+  "prisma": {
+    "seed": "tsx --env-file=.env prisma/seed.ts"
+  },
   "dependencies": {
     "@ai-sdk/google": "2.0.28",
     "@ai-sdk/openai": "2.0.62",
@@ -48,6 +51,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.16.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

@@ -10,7 +10,7 @@ import { format } from "date-fns";
 
 const inputSchema = z.object({
   serviceId: z.uuid(),
-  date: z.date(),
+  date: z.coerce.date(),
 });
 
 export const createBookingCheckoutSession = actionClient
