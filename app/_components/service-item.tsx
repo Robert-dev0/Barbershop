@@ -93,8 +93,9 @@ export function ServiceItem({ service }: ServiceItemProps) {
 
   return (
     <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
-      <div className="border-border bg-card flex items-center justify-center gap-3 rounded-2xl border border-solid p-3">
-        <div className="relative size-[110px] shrink-0 overflow-hidden rounded-[10px]">
+      <div className="border-border bg-card flex w-full items-center gap-3 rounded-2xl border border-solid p-3">
+        {/* IMAGE CONTAINER */}
+        <div className="relative h-[110px] w-[110px] shrink-0 overflow-hidden rounded-[10px]">
           <Image
             src={service.imageUrl}
             alt={service.name}
@@ -103,30 +104,29 @@ export function ServiceItem({ service }: ServiceItemProps) {
           />
         </div>
 
-        <div className="flex grow basis-0 flex-row items-center self-stretch">
-          <div className="relative flex h-full min-h-0 min-w-0 grow basis-0 flex-col items-start justify-between">
-            <div className="flex h-[67.5px] w-full flex-col items-start gap-1 text-sm leading-[1.4]">
-              <p className="text-card-foreground w-full font-bold">
-                {service.name}
-              </p>
-              <p className="text-muted-foreground w-full font-normal">
-                {service.description}
-              </p>
-            </div>
+        {/* TEXT CONTAINER */}
+        <div className="flex flex-1 flex-col justify-between overflow-hidden">
+          <div className="flex flex-col gap-1">
+            <h3 className="text-card-foreground text-sm font-bold truncate">
+              {service.name}
+            </h3>
+            <p className="text-muted-foreground text-sm font-normal line-clamp-2">
+              {service.description}
+            </p>
+          </div>
 
-            <div className="flex w-full items-center justify-between">
-              <p className="text-card-foreground text-sm leading-[1.4] font-bold whitespace-pre">
-                {priceInReais}
-              </p>
-              <SheetTrigger asChild>
-                <Button className="rounded-full px-4 py-2">Reservar</Button>
-              </SheetTrigger>
-            </div>
+          <div className="mt-3 flex items-center justify-between">
+            <p className="text-card-foreground text-sm font-bold">
+              {priceInReais}
+            </p>
+            <SheetTrigger asChild>
+              <Button className="rounded-full px-4 py-2" size="sm">Reservar</Button>
+            </SheetTrigger>
           </div>
         </div>
       </div>
 
-      <SheetContent className="w-[370px] overflow-y-auto p-0">
+      <SheetContent className="w-full sm:max-w-[400px] overflow-y-auto p-0">
         <div className="flex h-full flex-col gap-6">
           <SheetHeader className="px-5 pt-6">
             <SheetTitle className="text-lg font-bold">Fazer Reserva</SheetTitle>
@@ -147,7 +147,7 @@ export function ServiceItem({ service }: ServiceItemProps) {
             <>
               <Separator />
 
-              <div className="flex gap-3 overflow-x-auto px-5 [&::-webkit-scrollbar]:hidden">
+              <div className="flex items-center gap-3 overflow-x-auto px-5 py-5 [&::-webkit-scrollbar]:hidden">
                 {availableTimeSlots?.data?.map((time) => (
                   <Button
                     key={time}
@@ -192,7 +192,7 @@ export function ServiceItem({ service }: ServiceItemProps) {
                 </div>
               </div>
 
-              <div className="px-5 pb-6">
+              <div className="px-5 pb-6 pt-2">
                 <Button
                   className="w-full rounded-full"
                   disabled={isConfirmDisabled || isPending}

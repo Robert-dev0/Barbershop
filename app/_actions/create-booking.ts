@@ -19,7 +19,7 @@ export const createBooking = actionClient
     });
     if (!session?.user) {
       returnValidationErrors(inputSchema, {
-        _errors: ["Unauthorized"],
+        _errors: ["Faça login para realizar o agendamento!"],
       });
     }
     const service = await prisma.barbershopService.findUnique({
